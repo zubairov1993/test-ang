@@ -8,20 +8,17 @@
     }"
   >
     <label for="email">Email:</label>
-    <input type="email" id="email" />
+    <input type="email" id="email" formControlName="email" />
     <div
       class="validation"
       *ngIf="form.get('email').touched && form.get('email').invalid"
     >
-      <small *ngIf="form.get('email').errors.required"
-        >введите Поле email</small
-      >
+      <small *ngIf="form.get('email').errors.required">введите email</small>
       <small *ngIf="form.get('email').errors.email"
-        >Поле email должно быть email</small
+        >Поле email должно быть eamil</small
       >
     </div>
   </div>
-
   <div
     class="form-control"
     [ngClass]="{
@@ -29,15 +26,23 @@
     }"
   >
     <label for="password">Password:</label>
-    <input type="password" id="password" />
+    <input type="password" id="password" formControlName="password" />
     <div
       class="validation"
       *ngIf="form.get('password').touched && form.get('password').invalid"
     >
-      <small>Поле password должно быть password</small>
+      <small *ngIf="form.get('password').errors.required"
+        >введите password</small
+      >
+      <small *ngIf="form.get('password').errors.minlength"
+        >password должен быть
+        {{ form.get("password").errors.minlength.requiredLength }}
+        символов. Сейчас он
+        {{ form.get("password").errors.minlength.actualLength }}
+        символов.</small
+      >
     </div>
   </div>
-
   <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
     Login
   </button>

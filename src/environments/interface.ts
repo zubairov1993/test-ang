@@ -1,4 +1,6 @@
-export class Environment {
+export interface Environment {
   apiKey: string
   production: boolean
+  fbDbUrl: string
 }
+

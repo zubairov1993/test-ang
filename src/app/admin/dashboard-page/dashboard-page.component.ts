@@ -5,10 +5,10 @@ import { PostsService } from 'src/app/shared/posts.service';
 
 @Component({
   selector: 'app-dashbord-page',
-  templateUrl: './dashbord-page.component.html',
-  styleUrls: ['./dashbord-page.component.scss']
+  templateUrl: './dashboard-page.component.html',
+  styleUrls: ['./dashboard-page.component.scss']
 })
-export class DashbordPageComponent implements OnInit, OnDestroy {
+export class DashboardPageComponent implements OnInit, OnDestroy {
 
   posts: Post[] = []
   pSub: Subscription

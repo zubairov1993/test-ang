@@ -1,46 +1,21 @@
-<div class="post">
-  <div class="header">
-    <h2>Posttit</h2>
+<div *ngIf="posts$ | async as post; else loading">
+  <div class="post">
+    <div class="header">
+      <h2>{{ post.title }}</h2>
 
-    <button routerLink="/" class="btn btn-link">Home</button>
-  </div>
+      <button routerLink="/" class="btn btn-link">Home</button>
+    </div>
 
-  <div class="info">
-    <strong>Author</strong>
-    <small>3300</small>
-  </div>
-  <div>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit
-      provident inventore eos, est id ipsum, fuga eaque optio magni possimus
-      accusamus? Perspiciatis quod ratione soluta minus, vel corrupti labore
-      numquam quidem voluptas quisquam mollitia consequuntur incidunt! Ducimus
-      explicabo natus unde iste perferendis vero nostrum laboriosam vel, itaque
-      nesciunt accusantium aut!
-    </p>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit
-      provident inventore eos, est id ipsum, fuga eaque optio magni possimus
-      accusamus? Perspiciatis quod ratione soluta minus, vel corrupti labore
-      numquam quidem voluptas quisquam mollitia consequuntur incidunt! Ducimus
-      explicabo natus unde iste perferendis vero nostrum laboriosam vel, itaque
-      nesciunt accusantium aut!
-    </p>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit
-      provident inventore eos, est id ipsum, fuga eaque optio magni possimus
-      accusamus? Perspiciatis quod ratione soluta minus, vel corrupti labore
-      numquam quidem voluptas quisquam mollitia consequuntur incidunt! Ducimus
-      explicabo natus unde iste perferendis vero nostrum laboriosam vel, itaque
-      nesciunt accusantium aut!
-    </p>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit
-      provident inventore eos, est id ipsum, fuga eaque optio magni possimus
-      accusamus? Perspiciatis quod ratione soluta minus, vel corrupti labore
-      numquam quidem voluptas quisquam mollitia consequuntur incidunt! Ducimus
-      explicabo natus unde iste perferendis vero nostrum laboriosam vel, itaque
-      nesciunt accusantium aut!
-    </p>
+    <div class="info">
+      <strong>{{ post.author }}</strong>
+      <small>{{ post.date | date: "medium":null:"ru" }}</small>
+    </div>
+    <div>
+      <quill-view-html [content]="post.text"></quill-view-html>
+    </div>
   </div>
 </div>
+
+<ng-template #loading>
+  <p class="text-center">Идет загрузка...</p>
+</ng-template>
